@@ -1,6 +1,6 @@
 # openai-agent-examples
 
-This repository contains practical examples of how to use the OpenAI Agents library to create and orchestrate AI agents.
+This repository contains practical examples of how to use the OpenAI Agents library to create and orchestrate AI agents. All introduction examples are from the Official OpenAI documentation. The simple chat is an example on how to use these concepts together.  
 
 ## Useful Documentation
 
