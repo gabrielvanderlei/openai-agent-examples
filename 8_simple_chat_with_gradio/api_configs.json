@@ -1,0 +1,61 @@
+[
+  {
+    "name": "Weather API",
+    "description": "Get the current weather for a city",
+    "url": "https://wttr.in/{city}",
+    "method": "GET",
+    "headers": {},
+    "params": {
+      "format": "j1"
+    },
+    "body": {},
+    "input_schema": {
+      "city": {
+        "type": "string",
+        "description": "The city to get weather for"
+      }
+    },
+    "output_mapping": {
+      "temperature_C": "current_condition.0.temp_C",
+      "temperature_F": "current_condition.0.temp_F",
+      "condition": "current_condition.0.weatherDesc.0.value",
+      "humidity": "current_condition.0.humidity"
+    },
+    "timeout": 10.0,
+    "error_message": "Sorry, I couldn't retrieve the weather information at the moment."
+  },
+  {
+    "name": "Joke API",
+    "description": "Get a random joke",
+    "url": "https://official-joke-api.appspot.com/random_joke",
+    "method": "GET",
+    "headers": {},
+    "params": {},
+    "body": {},
+    "input_schema": {},
+    "output_mapping": {
+      "setup": "setup",
+      "punchline": "punchline"
+    },
+    "timeout": 10.0,
+    "error_message": "Sorry, I couldn't retrieve a joke at the moment."
+  },
+  {
+    "name": "Bitcoin Price API",
+    "description": "Get the current Bitcoin price in USD",
+    "url": "https://api.coingecko.com/api/v3/simple/price",
+    "method": "GET",
+    "headers": {},
+    "params": {
+      "ids": "bitcoin",
+      "vs_currencies": "usd"
+    },
+    "body": {},
+    "input_schema": {},
+    "output_mapping": {
+      "price_usd": "bitcoin.usd"
+    },
+    "timeout": 10.0,
+    "error_message": "Sorry, I couldn't retrieve the Bitcoin price at the moment."
+  }
+]
