@@ -22,13 +22,14 @@ else:
 class UserInfo:  
     name: str
     uid: int
+    age: int
 
 @function_tool
 async def fetch_user_age(wrapper: RunContextWrapper[UserInfo]) -> str:  
-    return f"User {wrapper.context.name} is 47 years old"
+    return f"User {wrapper.context.name} is {wrapper.context.age} years old"
 
 async def main():
-    user_info = UserInfo(name="John", uid=123)  
+    user_info = UserInfo(name="John", age=32, uid=123)  
 
     agent = Agent[UserInfo](  
         name="Assistant",

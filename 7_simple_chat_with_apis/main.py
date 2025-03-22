@@ -164,42 +164,34 @@ async def main():
     # Initialize chat context
     ctx = ChatContext(user_id=user_id, username=username)
     
-    # Define a model name (this is just a placeholder in our simulation)
-    model_name = "o3-mini"
-    
     # Create agents with type annotation for context
     btc_agent = Agent[ChatContext](
         name="Bitcoin Agent",
         instructions="Provide the current Bitcoin price when requested",
-        model=model_name,
         tools=[get_btc_price],
     )
     
     jokes_agent = Agent[ChatContext](
         name="Jokes Agent",
         instructions="Tell jokes about the topic requested by the user",
-        model=model_name,
         tools=[get_joke],
     )
     
     weather_agent = Agent[ChatContext](
         name="Weather Agent",
         instructions="Provide weather information for cities around the world. Always require a city name.",
-        model=model_name,
         tools=[get_weather],
     )
     
     time_agent = Agent[ChatContext](
         name="Time Agent",
         instructions="Provide current time information",
-        model=model_name,
         tools=[get_time],
     )
     
     news_agent = Agent[ChatContext](
         name="News Agent",
         instructions="Search for and provide news headlines about specific topics",
-        model=model_name,
         tools=[search_news],
     )
     

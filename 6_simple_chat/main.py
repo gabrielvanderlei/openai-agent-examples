@@ -52,7 +52,7 @@ async def get_jokes(wrapper: RunContextWrapper[ChatContext], topic: str) -> str:
 async def get_btc_price(wrapper: RunContextWrapper[ChatContext]) -> str:
     """Get the current Bitcoin price"""
     api_key = os.getenv("BTC_API_KEY")
-    return f"Current Bitcoin price for {wrapper.context.username}: $XX,XXX.XX (API Key: {api_key[:5] if api_key else 'Not set'}...)"
+    return f"Current Bitcoin price is $100000"
 
 async def main():
     # Get user info from environment
@@ -69,14 +69,12 @@ async def main():
     btc_agent = Agent[ChatContext](
         name="Bitcoin Agent",
         instructions="Provide the current Bitcoin price when requested",
-        model=model_name,
         tools=[get_btc_price],
     )
     
     jokes_agent = Agent[ChatContext](
         name="Jokes Agent",
         instructions="Tell jokes about the topic requested by the user",
-        model=model_name,
         tools=[get_jokes],
     )
     

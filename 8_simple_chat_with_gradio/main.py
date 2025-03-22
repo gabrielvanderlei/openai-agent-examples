@@ -218,34 +218,30 @@ async def process_message(ctx, message, triage_agent):
     
     return response
 
-def create_agents(model_name="o3-mini"):
+def create_agents():
     """Create the agent system with all available tools"""
     # Create specialized agents
     weather_agent = Agent[ChatContext](
         name="Weather Agent",
         instructions="Provide weather information for cities around the world. Always require a city name.",
-        model=model_name,
         tools=[get_weather],
     )
     
     joke_agent = Agent[ChatContext](
         name="Joke Agent",
         instructions="Tell jokes when requested by the user.",
-        model=model_name,
         tools=[get_joke],
     )
     
     bitcoin_agent = Agent[ChatContext](
         name="Bitcoin Agent",
         instructions="Provide the current Bitcoin price when requested.",
-        model=model_name,
         tools=[get_bitcoin_price],
     )
     
     time_agent = Agent[ChatContext](
         name="Time Agent",
         instructions="Provide current time information.",
-        model=model_name,
         tools=[get_time],
     )
     
@@ -258,7 +254,6 @@ def create_agents(model_name="o3-mini"):
             cat_fact_agent = Agent[ChatContext](
                 name="Cat Fact Agent",
                 instructions="Provide random facts about cats when requested.",
-                model=model_name,
                 tools=[tool],
             )
             specialized_agents.append(cat_fact_agent)
@@ -292,7 +287,6 @@ def create_agents(model_name="o3-mini"):
         {{CHAT_HISTORY}}
         """,
         handoffs=specialized_agents,
-        model=model_name,
     )
     
     return triage_agent
