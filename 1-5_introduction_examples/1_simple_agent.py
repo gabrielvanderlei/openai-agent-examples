@@ -1,6 +1,21 @@
-from agents import Agent, InputGuardrail,GuardrailFunctionOutput, Runner
 from pydantic import BaseModel
 import asyncio
+from agents import Agent, InputGuardrail,GuardrailFunctionOutput, Runner
+
+from agents import set_default_openai_key
+import os
+
+from dotenv import load_dotenv
+
+# Load environment variables
+load_dotenv()
+
+# Set the default OpenAI API key using the function from the agents module
+openai_api_key = os.getenv("OPENAI_API_KEY")
+if openai_api_key:
+    set_default_openai_key(openai_api_key, use_for_tracing=True)
+else:
+    print("Warning: OPENAI_API_KEY environment variable is not set")
 
 class HomeworkOutput(BaseModel):
     is_homework: bool

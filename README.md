@@ -163,6 +163,15 @@ class ChatContext:
 # See complete code for more details
 ```
 
+### 5_1 - voice example
+- The voice example was added in a recent update.
+- It need to be executed in an environment with audio support.
+- And run: 
+
+```sh
+pip install openai-agents[voice] sounddevice
+```
+
 ## How the System Works
 
 In summary, OpenAI Agents works like a web system:
